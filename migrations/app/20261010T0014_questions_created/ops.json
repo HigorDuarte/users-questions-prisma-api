@@ -1,0 +1,41 @@
+[
+  {
+    "id": "table.questions",
+    "label": "Create table \"questions\"",
+    "summary": "Creates table \"questions\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "questions"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"questions\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"questions\""
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"questions\"",
+        "sql": "CREATE TABLE \"public\".\"questions\" (\n  \"content\" text NOT NULL,\n  \"created_at\" timestamptz DEFAULT (now()) NOT NULL,\n  \"id\" text NOT NULL,\n  \"title\" text NOT NULL,\n  \"updated_at\" timestamptz DEFAULT (now()) NOT NULL,\n  \"user_id\" text NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"questions\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": [
+          "\"public\".\"questions\""
+        ]
+      }
+    ]
+  }
+]

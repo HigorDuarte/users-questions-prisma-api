@@ -1,0 +1,83 @@
+[
+  {
+    "id": "index.questions.questions_user_id_idx_6c952402",
+    "label": "Create index \"questions_user_id_idx_6c952402\" on \"questions\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "index",
+        "name": "questions_user_id_idx_6c952402",
+        "table": "questions"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure index \"questions_user_id_idx_6c952402\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"questions_user_id_idx_6c952402\""
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create index \"questions_user_id_idx_6c952402\"",
+        "sql": "CREATE INDEX \"questions_user_id_idx_6c952402\" ON \"public\".\"questions\" (\"user_id\")",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify index \"questions_user_id_idx_6c952402\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": [
+          "\"public\".\"questions_user_id_idx_6c952402\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "foreignKey.questions.questions_user_id_fkey",
+    "label": "Add foreign key \"questions_user_id_fkey\" on \"questions\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "foreignKey",
+        "name": "questions_user_id_fkey",
+        "table": "questions"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure FK \"questions_user_id_fkey\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "questions_user_id_fkey",
+          "public",
+          "\"public\".\"questions\""
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add FK \"questions_user_id_fkey\"",
+        "sql": "ALTER TABLE \"public\".\"questions\"\nADD CONSTRAINT \"questions_user_id_fkey\"\nFOREIGN KEY (\"user_id\")\nREFERENCES \"public\".\"users\" (\"id\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify FK \"questions_user_id_fkey\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "questions_user_id_fkey",
+          "public",
+          "\"public\".\"questions\""
+        ]
+      }
+    ]
+  }
+]

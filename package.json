@@ -1,0 +1,27 @@
+{
+  "name": "fullstack-orm-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "postinstall": "prisma skills sync || exit 0",
+    "contract:emit": "prisma contract emit"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
+    "@prisma/orm-postgres": "^8.0.0-rc.16",
+    "dotenv": "^18.0.6",
+    "express": "^4.21.0",
+    "express-async-errors": "^3.1.1",
+    "tsx": "^4.19.1"
+  },
+  "devDependencies": {
+    "@prisma/cli-engine": "^0.6.3",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.4",
+    "prisma": "^8.0.0-rc.21",
+    "typescript": "^5.6.2"
+  }
+}

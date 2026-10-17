@@ -1,0 +1,210 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Prisma API
+meta:
+  id: wrk_0f5132368ea64bc1a7f166d0aadc3a91
+  created: 1789126815758
+  modified: 1792105520170
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_c382d4c56e17410fa40004aea8151145
+      created: 1792105536360
+      modified: 1792105536360
+      sortKey: -1792105536360
+      description: ""
+    children:
+      - url: http://localhost:3333/users
+        name: Create
+        meta:
+          id: req_29b50642a72141a3a76b97b380275749
+          created: 1792105595776
+          modified: 1792181930921
+          isPrivate: false
+          description: ""
+          sortKey: -1792105595776
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "José",
+            	"email": "joséLima@gmail.com"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/users
+        name: Index
+        meta:
+          id: req_b6ce1c0122ab44bc9a3163761d20d8b6
+          created: 1792105773070
+          modified: 1792174344206
+          isPrivate: false
+          description: ""
+          sortKey: -1792105773070
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/users/0cf6c1d2-21e8-4797-8bfa-6d79a5ef46d5
+        name: Show
+        meta:
+          id: req_2c66c68cf61f48bf8f741892b57e189c
+          created: 1792105817337
+          modified: 1792174290778
+          isPrivate: false
+          description: ""
+          sortKey: -1792105817337
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Questions
+    meta:
+      id: fld_d6710888a04a46fa9451a09fcf4caa5a
+      created: 1792175045545
+      modified: 1792175045545
+      sortKey: -1792175045545
+      description: ""
+    children:
+      - url: http://localhost:3333/questions
+        name: Index
+        meta:
+          id: req_31980c1785a64f6eb29c58519066658e
+          created: 1792175067541
+          modified: 1792175951990
+          isPrivate: false
+          description: ""
+          sortKey: -1792175067541
+        method: GET
+        parameters:
+          - name: title
+            value: ""
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/questions
+        name: Create
+        meta:
+          id: req_b4ffe067ff014fc48f5aa92cbd68bf0d
+          created: 1792175962815
+          modified: 1792245668204
+          isPrivate: false
+          description: ""
+          sortKey: -1792175962815
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"user_id": "044225c7-aac1-4a2c-9c76-b73190ca77e2",
+            	"title": "PHP",
+            	"content": "Camel Case"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/questions/044225c7-aac1-4a2c-9c76-b73190ca77e2
+        name: Update
+        meta:
+          id: req_3e85002612b24045b953890934615a77
+          created: 1792182165077
+          modified: 1792183485005
+          isPrivate: false
+          description: ""
+          sortKey: -1792140442439
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"content": "camel Case",
+            	"title": "JavaScript"
+            }
+        parameters:
+          - name: title
+            value: ""
+            description: ""
+            disabled: true
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3333/questions/445adcee-a67a-4199-95e0-b15b101fa874
+        name: Delete
+        meta:
+          id: req_3ce9969f2bca4fb58f86f5f1a8d31b2c
+          created: 1792189389301
+          modified: 1792201971403
+          isPrivate: false
+          description: ""
+          sortKey: -1792123129888
+        method: DELETE
+        parameters:
+          - name: title
+            value: ""
+            description: ""
+            disabled: true
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_c6d02dcb0713dcfb6c01296730ccec8dfbd3a5bc
+    created: 1792087207034
+    modified: 1792087207034
+environments:
+  name: Base Environment
+  meta:
+    id: env_c6d02dcb0713dcfb6c01296730ccec8dfbd3a5bc
+    created: 1789126815761
+    modified: 1792087206756
+    isPrivate: false
