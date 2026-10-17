@@ -31,5 +31,5 @@ Certifique-se de ter instalado em sua máquina:
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git](https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git)
-   cd NOME_DO_REPOSITORIO
+   git clone https://github.com/HigorDuarte/users-questions-prisma-api.git
+   cd users-questions-prisma-api
